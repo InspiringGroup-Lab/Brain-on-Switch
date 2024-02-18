@@ -1,5 +1,5 @@
 # Brain-on-Switch
-The repository of Brain-on-Switch: Towards Advanced Intelligent Network Data Plane via NN-Driven Traffic Analysis at Line-Speed.
+The repository of paper "Brain-on-Switch: Towards Advanced Intelligent Network Data Plane via NN-Driven Traffic Analysis at Line-Speed", published in USENIX NSDI 2024. 
 
 # Status
 The source code will be released soon!
