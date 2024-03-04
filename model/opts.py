@@ -17,7 +17,7 @@ def model_opts(parser):
     parser.add_argument("--loss_factor", type=float, default=0.8,
                         help="ISCXVPN2016: 0.8, BOTIOT: 0.5, CICIOT2022: 3, PeerRush: 1")
     parser.add_argument("--focal_loss_gamma", type=float, default=0,
-                        help="ISCXVPN2016: 0, BOTIOT: 0, CICIOT2022: 1, PeerRush: 0")
+                        help="ISCXVPN2016: 0, BOTIOT: 0.5, CICIOT2022: 1, PeerRush: 0")
     parser.add_argument("--loss_type", default="all", choices=["single", "all"],
                         help="ISCXVPN2016: all, BOTIOT: all, CICIOT2022: single, PeerRush: all")
 
