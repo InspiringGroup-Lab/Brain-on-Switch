@@ -24,16 +24,16 @@ def load_dataset(args, filename, is_train=False, shuffle=True):
             continue
         flow_num[ins['label']] += 1
 
-        len_seq = ins['len_seq'][args.window_size - 1:]
+        len_seq = ins['len_seq']
         for i in range(len(len_seq)):
             len_seq[i] = min(len_seq[i], 1500)
         if len(len_seq) > 4096:
             len_seq = len_seq[:4096]
         
-        ip_hl_seq = ins['ip_hl'][args.window_size - 1:]
-        ip_ttl_seq = ins['ip_ttl'][args.window_size - 1:]
-        ip_tos_seq = ins['ip_tos'][args.window_size - 1:]
-        tcp_off_seq = ins['tcp_off'][args.window_size - 1:]
+        ip_hl_seq = ins['ip_hl']
+        ip_ttl_seq = ins['ip_ttl']
+        ip_tos_seq = ins['ip_tos']
+        tcp_off_seq = ins['tcp_off']
 
         for i in range(len(len_seq)):
             x.append([len_seq[i], 
