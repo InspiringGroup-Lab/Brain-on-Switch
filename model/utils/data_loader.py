@@ -38,10 +38,6 @@ class FlowDataset(Dataset):
                     'label': ins['label'],
                     'len_seq': len_seq,
                     'ipd_seq': ipd_seq,
-                    'ip_hl': ins['ip_hl'],
-                    'ip_ttl': ins['ip_ttl'],
-                    'ip_tos': ins['ip_tos'],
-                    'tcp_off': ins['tcp_off'],
                     'real_len_seq': real_len_seq,
                     'real_ipd_seq_us': real_ipd_seq_us
                 }
