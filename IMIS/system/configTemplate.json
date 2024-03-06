@@ -1,0 +1,113 @@
+{
+    "DPDK" : {
+        "verbose": true,
+
+        "mbuf_pool_size": 33554431,
+
+        "number_rx_queue": 8,
+        "number_tx_queue": 8,
+
+        "core_num_for_analyzer": 8,
+        "core_num_for_buffer": 8,
+        "core_num_for_parser": 8,
+        "core_num_for_pool": 8,
+        "core_num": 33,
+
+        "core_list_for_analyzer": [1,2,3,4,5,6,7,8],
+        "core_list_for_buffer": [34,35,36,37,38,39,40,41],
+        "core_list_for_parser": [26,27,28,29,30,31,32,33],
+        "core_list_for_pool": [42,43,44,45,46,47,48,49],
+        "master_core": 0,
+
+        "dpdk_port_vec": [0],
+        "output_port": 0,
+
+        "eal_param_vec": [
+            "--allow",
+            "e3:00.0"
+        ]
+    },
+
+    "Parser": {
+        "verbose_mode_options": [
+            "init",
+            "tracing",
+            "summarizing",
+            "memory",
+            "data_flow",
+            "complete"
+        ],
+        "verbose_interval": 5.0,
+        "verbose_mode": ["init", "tracing"],
+        
+        "max_receive_burst": 64,
+        "parser_to_pool_pkt_metadata_arr_size": 131071,
+        "parser_to_buffer_pkt_arr_size": 33554431,
+
+        "hint": "No intersection between old_src_port_range and new_src_port_range and {0}",
+        
+        "test_src_ip": "04030201",
+        "test_dst_ip": "08070605",
+        "old_src_port_min": 30001,
+        "old_src_port_max": 32048,
+        "new_dst_port_min": 1,
+        "new_dst_port_max": 16384
+    },
+
+    "Pool": {
+        "verbose_mode_options": [
+            "init",
+            "tracing",
+            "summarizing",
+            "memory",
+            "data_flow",
+            "time_detail",
+            "complete"
+        ],
+        "verbose_interval": 5.0,
+        "verbose_mode": ["init", "tracing", "summarizing"],
+
+        "pkt_metadata_num_fetch_from_parser": 2048,
+        
+        "batch_size": 256,
+        "log_dir": "../log/TEST"
+    },
+
+    "Analyzer": {
+        "verbose_mode_options": [
+            "init",
+            "tracing",
+            "summarizing",
+            "memory",
+            "data_flow",
+            "time_detail",
+            "complete"
+        ],
+        "verbose_interval": 3.0,
+        "verbose_mode": ["init","tracing","data_flow","time_detail","summarizing"],
+        "analyzer_to_buffer_result_arr_size": 32767,
+        "keep_warm_batch_size": 64,
+        "log_dir": "../log/TEST",
+        "model_load_path": "../model/classifier/yatc.pt"
+    },
+
+    "Buffer": {
+        "verbose_mode_options": [
+            "init",
+            "tracing",
+            "summarizing",
+            "memory",
+            "data_flow",
+            "time_detail",
+            "complete"
+        ],
+        "verbose_interval": 3.0,
+        "verbose_mode": ["init","tracing","summarizing","memory","data_flow","time_detail"],
+
+        "pkt_num_fetch_from_parser": 8192,
+        "result_num_fetch_from_analyzer": 32768,
+        "buffer_size_per_flow": 33554431,
+        "buffer_timeout": 100,
+        "log_dir": "../log/TEST"
+    }
+}
