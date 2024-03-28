@@ -1,4 +1,5 @@
 # Datasets and Pre-processing
+You can download the complete dataset directories at [Link]().
 There are three directories for each dataset (ISCXVPN2016, BOTIOT, CICIOT2022, PeerRush):
 * `source/`
   *  Each class in the dataset corresponds to a subdirectory in `source/`, which contains the original pcap files for this class.
@@ -9,8 +10,6 @@ There are three directories for each dataset (ISCXVPN2016, BOTIOT, CICIOT2022, P
 *  `json/`
   *  `statistics.json` contains the total number of flows in the training/testing set, the number of classes and the number of flows for each individual class.
   *  `train.json` and `test.json` contain the flow records of the training set and the testing set respectively. Each flow record is a dictionary instance containing metadata such as flow label, pcap file path (in `pcap/`), packet length sequence, inter-packet delay sequence, etc.
-
-You can download the complete dataset directories at [Link]().
 
 ## Explanation of Data Pre-processing 
 For every dataset used in our evaluations, we collect flow records from the original pcap files using the following procedure. 
