@@ -15,4 +15,4 @@
 
 # Convert Binary RNN Model into Feed Forward Tables
 
-* Run `python model_convertion.py --dataset DATASET_NAME`. The feed forward tables will be saved in `./save/DATASET_NAME/`.
+* Run `python model_convertion.py --dataset DATASET_NAME`. The feed forward tables will be saved in `../p4/fw_tables/DATASET_NAME/`.
