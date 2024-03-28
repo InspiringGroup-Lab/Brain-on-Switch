@@ -1,12 +1,12 @@
 # Datasets and Pre-processing
-You can download the complete dataset directories at [Link]().
+You can download the complete dataset directories at [Link](https://drive.google.com/drive/folders/1dNzC0M57e17t2pqvkEX77305EdoRn9sJ?usp=sharing).
 There are three directories for each dataset (ISCXVPN2016, BOTIOT, CICIOT2022, PeerRush):
 1. `source/`
   -  Each class in the dataset corresponds to a subdirectory in `source/`, which contains the original pcap files for this class.
-  -  By running `prepare_dataset.py`, we extract 5-tuple-identified flows from the original pcap files and save each flow as a single pcap file in `pcap/`.
+  -  By running `python prepare_dataset.py --dataset DATASET_NAME`, we extract 5-tuple-identified flows from the original pcap files and save each flow as a single pcap file in `pcap/`.
 2. `pcap/`
   -  Each class in the dataset corresponds to a subdirectory in `pcap/`, which contains the pcap files for 5-tuple-identified flows extracted from `source/`.
-  -  By running `pcap2json.py`, we parse the metadata of each flow from its pcap file and generate the training/testing sets. The training/testing sets are saved in json format in `json/`.
+  -  By running `python pcap2json.py --dataset DATASET_NAME`, we parse the metadata of each flow from its pcap file and generate the training/testing sets. The training/testing sets are saved in json format in `json/`.
 3. `json/`
   -  `statistics.json` contains the total number of flows in the training/testing set, the number of classes and the number of flows for each individual class.
   -  `train.json` and `test.json` contain the flow records of the training set and the testing set respectively. Each flow record is a dictionary instance containing metadata such as flow label, pcap file path (in `pcap/`), packet length sequence, inter-packet delay sequence, etc.
