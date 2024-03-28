@@ -7,7 +7,11 @@
 2. Model Training
 
 * Run `python train.py --dataset DATASET_NAME`. The model checkpoints and training logs will be saved in `./save/DATASET_NAME/`.
-* The binary RNN model is trained with the flow segments sliced by the sliding window. To test the accuracy with the intermediate results aggregation, run `python aggregator.py --dataset= DATASET_NAME`. The results will also be saved in `./save/DATASET_NAME/`.
+
+3. Confidence Thresholds Determination
+
+* The binary RNN model is trained with the flow segments sliced by the sliding window.
+* By running `python aggregator.py --dataset= DATASET_NAME`, we perform binary RNN inference with the intermediate results aggregation mechanism. The CDF of packet confidence will be saved in `./save/DATASET_NAME/`, which can be used to determine the confidence thresholds for analysis escalation.
 
 # Convert Binary RNN Model into Feed Forward Tables
 
