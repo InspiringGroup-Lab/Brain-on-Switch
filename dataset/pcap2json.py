@@ -72,7 +72,6 @@ def pcap2json(flow_file, label, args):
             flow['tcp_off_seq'].append(tcp.dataofs)
         else:
             flow['tcp_off_seq'].append(0)
-
     return flow
 
 
@@ -90,6 +89,8 @@ def main():
         labels = json.load(fp)
     
     all_json = []
+    max_packet_length = 0
+    min_packet_length = 0
     flow_length_distribution = [0 for i in range(args.truncate_flow_length + 1)]
     max_flow_length = 0
     for label in labels.keys():
@@ -107,8 +108,17 @@ def main():
                     continue
                 
                 all_json.append(flow)
+                max_packet_length = max(max_packet_length, max(flow['direction_length']))
+                min_packet_length = min(min_packet_length, min(flow['direction_length']))
                 flow_length_distribution[flow['packet_num']] += 1
                 max_flow_length = max(max_flow_length, flow['packet_num'])
+
+                instance_num += 1
+                if instance_num >= (5000 if label == 'Benign' else 1000):
+                    break
+                
+            if instance_num >= (5000 if label == 'Benign' else 1000):
+                break
     
     train_ratio = 0.8
     test_ratio = 0.2
@@ -119,7 +129,9 @@ def main():
     test_json = all_json[int(train_ratio * instance_num):]
 
     statistics_json = {'train:test': '{}:{}'.format(train_ratio, test_ratio),
-        'label_num': len(labels.keys())
+        'label_num': len(labels.keys()),
+        'max_length': max_packet_length,
+        'min_length': min_packet_length
     }
 
     for filename, instances in [('all.json', all_json), 

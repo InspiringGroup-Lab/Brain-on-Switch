@@ -77,7 +77,7 @@ def main():
 
     args = parser.parse_args()
     # Set dataset & model path according to options
-    args.test_path = '../dataset/{}/json/test.json'.format(args.dataset)
+    args.test_path = '../dataset/{}/json/train.json'.format(args.dataset)
     args.model_dir = './save/{}/brnn_len{}_ipd{}_ev{}_hidden{}_{}/'.format(
         args.dataset, args.len_embedding_bits, args.ipd_embedding_bits, args.embedding_vector_bits, args.rnn_hidden_bits,
         str(args.loss_factor) + '_' + str(args.focal_loss_gamma) + '_' + args.loss_type + '_' + str(args.learning_rate))
