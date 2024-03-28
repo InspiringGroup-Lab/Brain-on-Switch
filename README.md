@@ -2,7 +2,8 @@
 The repository of paper [Brain-on-Switch: Towards Advanced Intelligent Network Data Plane via NN-Driven Traffic Analysis at Line-Speed](https://www.usenix.org/conference/nsdi24/presentation/yan), published in USENIX NSDI 2024. (The PDF is available at [Link](https://arxiv.org/abs/2403.11090))
 
 # Repository Overview
-There are several directories in this repo:
+Our artifact includes the following directories: 
+
 * [dataset/](https://github.com/InspiringGroup-Lab/Brain-on-Switch/tree/main/dataset) contains our datasets and the source code for data pre-processing.
 * [model/](https://github.com/InspiringGroup-Lab/Brain-on-Switch/tree/main/model) contains the source code for training our binary RNN model, and converting the trained model into feed forward tables for switch-side implementation.
 * [PerPacket/](https://github.com/InspiringGroup-Lab/Brain-on-Switch/tree/main/PerPacket) contains the source code for training the tree-based model for handling the flows without dedicated per-flow storage on switch.
