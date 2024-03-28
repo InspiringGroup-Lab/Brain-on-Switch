@@ -1,5 +1,5 @@
 # Brain-on-Switch
-The repository of paper [Brain-on-Switch: Towards Advanced Intelligent Network Data Plane via NN-Driven Traffic Analysis at Line-Speed](https://www.usenix.org/conference/nsdi24/presentation/yan), published in USENIX NSDI 2024. (The PDF is available at https://arxiv.org/abs/2403.11090)
+The repository of paper [Brain-on-Switch: Towards Advanced Intelligent Network Data Plane via NN-Driven Traffic Analysis at Line-Speed](https://www.usenix.org/conference/nsdi24/presentation/yan), published in USENIX NSDI 2024. (The PDF is available at [Link](https://arxiv.org/abs/2403.11090))
 
 # Repository Overview
 There are several directories in this repo:
