@@ -6,4 +6,4 @@
 
 2. Model Training
 
-* Run `python train.py --dataset DATASET_NAME`. The trained model, accuracy on the testing set and the feature importances will be saved in `./save/DATASET_NAME/`.
+* Run `python train.py --dataset DATASET_NAME`. The trained model, accuracy on the testing set and feature importances will be saved in `./save/DATASET_NAME/`.
