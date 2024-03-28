@@ -1,0 +1,6 @@
+{
+    "DataExfiltration": 0,
+    "Keylogging": 1,
+    "OSScan": 2,
+    "ServiceScan": 3
+}

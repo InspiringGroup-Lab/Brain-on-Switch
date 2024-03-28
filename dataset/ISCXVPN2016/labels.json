@@ -1,0 +1,8 @@
+{
+    "Email": 0,
+    "Chat": 1,
+    "Streaming": 2,
+    "FTP": 3,
+    "VoIP": 4,
+    "P2P": 5
+}
