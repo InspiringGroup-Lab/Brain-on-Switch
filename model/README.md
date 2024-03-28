@@ -1,4 +1,4 @@
-# Binary RNN Model Training
+# Train Binary RNN Model
 
 1. Parameters Configuration
 
