@@ -16,3 +16,13 @@ To forward the escalated traffic between the switch and the server, you need bui
 
 # Contact
 Please post a Github issue or send an email to [yanjz22@mails.tsinghua.edu.cn](yanjz22@mails.tsinghua.edu.cn) if you have any questions.
+
+# Credit
+Cite this paper as follows  if you find this code repo is useful to you. 
+@inproceedings{yan2024brain,
+  title={{Brain-on-Switch: Towards Advanced Intelligent Network Data Plane via NN-Driven Traffic Analysis at Line-Speed}},
+  author={Yan, Jinzhu and Xu, Haotian and Liu, Zhuotao and Li, Qi and Xu, Ke and Xu, Mingwei and Wu, Jianping},
+  booktitle={21st USENIX Symposium on Networked Systems Design and Implementation (NSDI 24)},
+  pages={419--440},
+  year={2024}
+}
