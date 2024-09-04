@@ -34,6 +34,10 @@ def main():
     with open('../dataset/{}/json/statistics.json'.format(args.dataset)) as fp:
         statistics = json.load(fp)
         args.labels_num = statistics['label_num']
+
+        class_weights = [1] * args.labels_num
+        args.class_weights = class_weights
+        print('class weights: {}'.format(class_weights))
     
     set_seed(args.seed)
 
@@ -58,7 +62,7 @@ def main():
     test_loader = build_data_loader(args, args.test_path, args.batch_size, is_train=False, shuffle=True)
 
     trainer = BRNNTrainer(args)
-    trainer.train(args, gpu_id, train_loader, test_loader, model, optimizer, scheduler)
+    trainer.train(args, train_loader, test_loader, model, optimizer, scheduler)
     
 
 if __name__ == "__main__":
