@@ -128,7 +128,7 @@ class BRNNTrainer(object):
         conf_mat_test = np.zeros([args.labels_num, args.labels_num])
         with torch.no_grad():
             for batch in test_loader:
-                len_x_batch, ipd_x_batch, label_batch = batch2segs(args, batch, args.max_cluster_segs)
+                len_x_batch, ipd_x_batch, label_batch = batch2segs(args, batch)
                 loss, logits, loss_1, loss_2 = self.forward_propagation(len_x_batch, ipd_x_batch, label_batch, model)
                 
                 test_samples += len_x_batch.shape[0]
