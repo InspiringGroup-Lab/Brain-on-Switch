@@ -118,7 +118,7 @@ def main():
             len_x_batch, ipd_x_batch, label_batch = batch2segs(args, batch, max_cluster_segs=None)
             logits = model(len_x_batch, ipd_x_batch)
             probability_vectors = torch.nn.functional.softmax(logits)
-            probability_vectors.reshape([-1, args.labels_num])
+            probability_vectors = probability_vectors.reshape([-1, args.labels_num])
             accumulative_probabilities = [0] * args.labels_num
 
             label = int(label_batch[0].cpu())
