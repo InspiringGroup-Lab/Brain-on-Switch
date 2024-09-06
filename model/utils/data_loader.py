@@ -21,9 +21,10 @@ class FlowDataset(Dataset):
             ipd_seq = [0]
             ipd_seq.extend([ts_seq[i] - ts_seq[i - 1] for i in range(1, len(ts_seq))])
             real_ipd_seq_us = [i * 1e6 for i in ipd_seq]
-            # Truncate the ipd, unit: 16384 ns
+            # Truncate the ipd
             for i in range(len(ipd_seq)):
-                ipd_seq[i] = min(ipd_seq[i] * 1e9 // 16384, args.ipd_vocab - 1)
+                # ipd_seq[i] = min(ipd_seq[i] * 1e9 // 16384, args.ipd_vocab - 1) # unit: 16384 ns, taking into account the precision of tofino operations
+                ipd_seq[i] = min(round(ipd_seq[i] * 10000), args.ipd_vocab - 1) # unit: 0.1 ms
                 assert ipd_seq[i] >= 0
             
             # Truncate the flow
