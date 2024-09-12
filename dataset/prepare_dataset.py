@@ -33,7 +33,7 @@ PeerRush_IP_filter = {
 
 
 def split_pcap_by_time(input_file, output_dir, time_interval, args):
-    time_interval = time_interval * 1e9 // 16384 / 1e9
+    # time_interval = time_interval * 1e9 // 16384 * 16384  # taking into account the precision of tofino operations
     os.mkdir(output_dir)    
     flow_end_ts = -1
     flows = []  # [flow, ...]
