@@ -42,23 +42,26 @@ def flow_pre_processing(flow, input_packets, header_bytes, payload_bytes, row_by
         
         # Mask IP addresses & ports
         ip = packet['IP'].copy()
-        tcp = packet['TCP'].copy()
+        try:
+            tcp_udp = packet['TCP'].copy()
+        except:
+            tcp_udp = packet['UDP'].copy()
 
-        src_sport = ip.src + '-' + str(tcp.sport)
+        src_sport = ip.src + '-' + str(tcp_udp.sport)
         if src_sport != prev_src_sport:
             direction = - direction
             prev_src_sport = src_sport
 
         ip.payload = scapy.NoPayload()
         ip_hex_string = (binascii.hexlify(bytes(ip))).decode()
-        tcp.payload = scapy.NoPayload()
-        tcp_hex_string = (binascii.hexlify(bytes(tcp))).decode()
+        tcp_udp.payload = scapy.NoPayload()
+        tcp_udp_hex_string = (binascii.hexlify(bytes(tcp_udp))).decode()
         if direction == 1:
             header = header.replace(ip_hex_string[:40], ip_hex_string[:24] + 'ffffffff00000000')
-            header = header.replace(tcp_hex_string, 'ffff0000' + tcp_hex_string[8:])
+            header = header.replace(tcp_udp_hex_string, 'ffff0000' + tcp_udp_hex_string[8:])
         else:
             header = header.replace(ip_hex_string[:40], ip_hex_string[:24] + '00000000ffffffff')
-            header = header.replace(tcp_hex_string, '0000ffff' + tcp_hex_string[8:])
+            header = header.replace(tcp_udp_hex_string, '0000ffff' + tcp_udp_hex_string[8:])
 
         if len(header) > header_hexes:
             header = header[:header_hexes]
