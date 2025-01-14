@@ -91,7 +91,6 @@ class BRNNTrainer(object):
 
         softmax = torch.nn.functional.softmax(logits)
         one_hot = torch.nn.functional.one_hot(label_batch, num_classes=self.labels_num)
-        alpha = torch.tensor([self.class_weights[label] for label in label_batch], device=one_hot.device)
 
         p_y = softmax[one_hot == 1]
         loss_y = - (1 - p_y) ** self.focal_loss_gamma * torch.log(p_y)
@@ -106,10 +105,6 @@ class BRNNTrainer(object):
             p_others = softmax[one_hot == 0].reshape(shape=(len(softmax), self.labels_num - 1))
             loss_others = - p_others ** self.focal_loss_gamma * torch.log(1 - p_others)
             loss_others = torch.sum(loss_others, dim=1)
-        
-        if self.weighted != 'unweighted':
-            loss_y = alpha * loss_y
-            loss_others = alpha * loss_others
 
         loss_1 = torch.sum(loss_y) / len(softmax)
         loss_2 = torch.sum(loss_others) / len(softmax)
